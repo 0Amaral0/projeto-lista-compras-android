@@ -8,11 +8,12 @@
     <fragment
         android:id="@+id/cadastroFragment"
         android:name="com.example.lista_compras_crud.ui.item_shop.CadastroFragment"
-        android:label="Cadastro"
+        android:label="@string/item_shop_add"
         tools:layout="@layout/cadastro_fragment" />
+
     <fragment
         android:id="@+id/itemShopListFragment"
         android:name="com.example.lista_compras_crud.ui.item_shop_list.ItemShopListFragment"
-        android:label="item_shop_list_fragment"
+        android:label="@string/item_shop_list"
         tools:layout="@layout/item_shop_list_fragment" />
 </navigation>

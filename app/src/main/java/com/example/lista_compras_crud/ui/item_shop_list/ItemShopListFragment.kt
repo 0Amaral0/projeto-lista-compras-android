@@ -12,6 +12,7 @@ import com.example.lista_compras_crud.R
 import com.example.lista_compras_crud.data.db.AppDatabase
 import com.example.lista_compras_crud.data.db.dao.ItemShopDAO
 import com.example.lista_compras_crud.data.db.entity.ItemShopEntity
+import com.example.lista_compras_crud.extension.navigateWithAnimations
 import com.example.lista_compras_crud.repository.DatabaseDataSource
 import com.example.lista_compras_crud.repository.ItemShopRepository
 import com.example.lista_compras_crud.ui.item_shop.ItemShopViewModel
@@ -51,7 +52,7 @@ class ItemShopListFragment : Fragment(R.layout.item_shop_list_fragment) {
 
     private fun configureViewListeners() {
         fabAddItemShop.setOnClickListener {
-            findNavController().navigate(R.id.cadastroFragment)
+            findNavController().navigateWithAnimations(R.id.cadastroFragment)
         }
     }
 }
