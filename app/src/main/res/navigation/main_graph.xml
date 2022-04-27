@@ -6,14 +6,25 @@
     app:startDestination="@id/itemShopListFragment">
 
     <fragment
-        android:id="@+id/cadastroFragment"
-        android:name="com.example.lista_compras_crud.ui.item_shop.CadastroFragment"
-        android:label="@string/item_shop_add"
-        tools:layout="@layout/cadastro_fragment" />
-
-    <fragment
         android:id="@+id/itemShopListFragment"
         android:name="com.example.lista_compras_crud.ui.item_shop_list.ItemShopListFragment"
         android:label="@string/item_shop_list"
-        tools:layout="@layout/item_shop_list_fragment" />
+        tools:layout="@layout/item_shop_list_fragment" >
+        <action
+            android:id="@+id/action_itemShopListFragment_to_cadastroFragment"
+            app:destination="@id/cadastroFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/cadastroFragment"
+        android:name="com.example.lista_compras_crud.ui.item_shop.CadastroFragment"
+        android:label="@string/item_shop_add"
+        tools:layout="@layout/cadastro_fragment" >
+        <argument
+            android:name="shop_item"
+            app:argType="com.example.lista_compras_crud.data.db.entity.ItemShopEntity"
+            android:defaultValue="@null"
+            app:nullable="true" />
+    </fragment>
+
 </navigation>

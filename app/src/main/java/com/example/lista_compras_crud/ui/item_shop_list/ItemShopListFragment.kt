@@ -7,6 +7,7 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.NavDirections
 import androidx.navigation.fragment.findNavController
 import com.example.lista_compras_crud.R
 import com.example.lista_compras_crud.data.db.AppDatabase
@@ -41,7 +42,13 @@ class ItemShopListFragment : Fragment(R.layout.item_shop_list_fragment) {
 
     private fun observeViewModelEvents() {
         viewModel.allItemShopEvent.observe(viewLifecycleOwner) { allItemsShop ->
-            val itemShopListAdapter = ItemShopListAdapter(allItemsShop)
+            val itemShopListAdapter = ItemShopListAdapter(allItemsShop).apply {
+                onItemClick = { itemShop ->
+                    val directions = ItemShopListFragmentDirections
+                        .actionItemShopListFragmentToCadastroFragment(itemShop)
+                    findNavController().navigateWithAnimations(directions)
+                }
+            }
 
             with (recycler_items_shop) {
                 setHasFixedSize(true)
@@ -57,7 +64,9 @@ class ItemShopListFragment : Fragment(R.layout.item_shop_list_fragment) {
 
     private fun configureViewListeners() {
         fabAddItemShop.setOnClickListener {
-            findNavController().navigateWithAnimations(R.id.cadastroFragment)
+            findNavController().navigateWithAnimations(
+                R.id.action_itemShopListFragment_to_cadastroFragment
+            )
         }
     }
 }

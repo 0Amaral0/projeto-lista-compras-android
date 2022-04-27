@@ -51,6 +51,6 @@
         app:layout_constraintTop_toBottomOf="@id/input_layout_item_quant"
         app:layout_constraintStart_toStartOf="@id/input_layout_item_name"
         app:layout_constraintEnd_toEndOf="@id/input_layout_item_name"
-        android:text="Adicionar Item"/>
+        android:text="@string/button_cadastro"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

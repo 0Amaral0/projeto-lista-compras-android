@@ -22,7 +22,28 @@ class ItemShopViewModel(
     val messageEventData: LiveData<Int>
         get() = _messageEventData
 
-    fun addItemShop(name: String, quantity: String) = viewModelScope.launch {
+    fun addOrUpdateItemShop(name: String, quantity: String, id: Long = 0) {
+        if (id > 0) {
+            updatetItemShop(id, name, quantity)
+        } else {
+            insertItemShop(name, quantity)
+        }
+    }
+
+    private fun updatetItemShop(id: Long, name: String, quantity: String) = viewModelScope.launch {
+        try {
+            repository.updateItemShop(id, name, quantity)
+
+            _itemShopStateEventData.value = ItemShopState.Updated
+            _messageEventData.value = R.string.item_shop_success_update
+
+        } catch (ex: Exception) {
+            _messageEventData.value = R.string.item_shop_error_insert
+            Log.e(TAG, ex.toString())
+        }
+    }
+
+    private fun insertItemShop(name: String, quantity: String) = viewModelScope.launch {
         try {
             val id = repository.insertItemShop(name, quantity)
             if (id > 0) {
@@ -37,6 +58,7 @@ class ItemShopViewModel(
 
     sealed class ItemShopState {
         object Inserted : ItemShopState()
+        object Updated : ItemShopState()
     }
 
     companion object {

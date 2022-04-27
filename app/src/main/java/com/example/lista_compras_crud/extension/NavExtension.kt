@@ -1,6 +1,7 @@
 package com.example.lista_compras_crud.extension
 
 import androidx.navigation.NavController
+import androidx.navigation.NavDirections
 import androidx.navigation.NavOptions
 import com.example.lista_compras_crud.R
 
@@ -16,4 +17,11 @@ fun NavController.navigateWithAnimations(
     animation: NavOptions = slideLeftOptions
 ) {
     this.navigate(destinationId, null, animation)
+}
+
+fun NavController.navigateWithAnimations(
+    directions: NavDirections,
+    animation: NavOptions = slideLeftOptions
+) {
+    this.navigate(directions, animation)
 }

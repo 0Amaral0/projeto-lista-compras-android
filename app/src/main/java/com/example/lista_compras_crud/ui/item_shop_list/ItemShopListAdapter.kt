@@ -13,6 +13,8 @@ class ItemShopListAdapter(
     private val shop_item: List<ItemShopEntity>
 ) : RecyclerView.Adapter<ItemShopListAdapter.ItemShopListViewHolder>() {
 
+    var onItemClick: ((entity: ItemShopEntity) -> Unit)? = null
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ItemShopListViewHolder {
         val view = LayoutInflater.from(parent.context)
             .inflate(R.layout.shop_list_item, parent, false)
@@ -26,13 +28,17 @@ class ItemShopListAdapter(
 
     override fun getItemCount() = shop_item.size
 
-    class ItemShopListViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+    inner class ItemShopListViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         private val textViewItemShopName: TextView = itemView.txt_item_shop_name
         private val textViewItemShopQuantity: TextView = itemView.txt_item_shop_quantity
 
         fun bindView(shop_item: ItemShopEntity) {
             textViewItemShopName.text = shop_item.name
             textViewItemShopQuantity.text = shop_item.quantity
+
+            itemView.setOnClickListener {
+                onItemClick?.invoke(shop_item)
+            }
         }
     }
 }
