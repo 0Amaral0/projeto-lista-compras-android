@@ -7,6 +7,7 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import com.example.lista_compras_crud.R
 import com.example.lista_compras_crud.data.db.AppDatabase
 import com.example.lista_compras_crud.data.db.dao.ItemShopDAO
@@ -34,6 +35,7 @@ class ItemShopListFragment : Fragment(R.layout.item_shop_list_fragment) {
         super.onViewCreated(view, savedInstanceState)
 
         observeViewModelEvents()
+        configureViewListeners()
     }
 
     private fun observeViewModelEvents() {
@@ -44,6 +46,12 @@ class ItemShopListFragment : Fragment(R.layout.item_shop_list_fragment) {
                 setHasFixedSize(true)
                 adapter = itemShopListAdapter
             }
+        }
+    }
+
+    private fun configureViewListeners() {
+        fabAddItemShop.setOnClickListener {
+            findNavController().navigate(R.id.cadastroFragment)
         }
     }
 }
