@@ -21,12 +21,14 @@
         android:paddingBottom="8dp">
 
         <TextView
+            android:id="@+id/txt_item_shop_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="18sp"
             tools:text="Nome do Item"/>
 
         <TextView
+            android:id="@+id/txt_item_shop_quantity"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             tools:text="Quantidade de Itens"

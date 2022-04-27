@@ -3,11 +3,16 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main_graph"
-    app:startDestination="@id/cadastroFragment">
+    app:startDestination="@id/itemShopListFragment">
 
     <fragment
         android:id="@+id/cadastroFragment"
         android:name="com.example.lista_compras_crud.ui.item_shop.CadastroFragment"
         android:label="Cadastro"
         tools:layout="@layout/cadastro_fragment" />
+    <fragment
+        android:id="@+id/itemShopListFragment"
+        android:name="com.example.lista_compras_crud.ui.item_shop_list.ItemShopListFragment"
+        android:label="item_shop_list_fragment"
+        tools:layout="@layout/item_shop_list_fragment" />
 </navigation>
