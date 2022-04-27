@@ -17,9 +17,9 @@
 
     <fragment
         android:id="@+id/cadastroFragment"
-        android:name="com.example.lista_compras_crud.ui.item_shop.CadastroFragment"
+        android:name="com.example.lista_compras_crud.ui.item_shop.ItemShopFragment"
         android:label="@string/item_shop_add"
-        tools:layout="@layout/cadastro_fragment" >
+        tools:layout="@layout/item_shop_fragment" >
         <argument
             android:name="shop_item"
             app:argType="com.example.lista_compras_crud.data.db.entity.ItemShopEntity"

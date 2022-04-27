@@ -6,8 +6,12 @@
 
     <string name="button_cadastro">Adicionar Item</string>
     <string name="button_cadastro_update">Modificar Item</string>
+    <string name="button_delete">Deletar Item</string>
 
     <string name="item_shop_list">Lista de Compras</string>
     <string name="item_shop_add">Adicionar Item</string>
     <string name="item_shop_success_update">Item atualizado com sucesso</string>
+    <string name="item_shop_success_delete">Item deletado com sucesso</string>
+    <string name="item_shop_error_delete">Houve um erro ao tentar deletar o item</string>
+    <string name="item_shop_error_update">Houve um erro ao tentar modificar o item</string>
 </resources>

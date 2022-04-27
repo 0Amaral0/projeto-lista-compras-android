@@ -7,7 +7,6 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import androidx.navigation.NavArgs
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.example.lista_compras_crud.R
@@ -16,11 +15,10 @@ import com.example.lista_compras_crud.data.db.dao.ItemShopDAO
 import com.example.lista_compras_crud.extension.hideKeyboard
 import com.example.lista_compras_crud.repository.DatabaseDataSource
 import com.example.lista_compras_crud.repository.ItemShopRepository
-import com.example.lista_compras_crud.ui.item_shop_list.ItemShopListFragment
 import com.google.android.material.snackbar.Snackbar
-import kotlinx.android.synthetic.main.cadastro_fragment.*
+import kotlinx.android.synthetic.main.item_shop_fragment.*
 
-class CadastroFragment : Fragment(R.layout.cadastro_fragment) {
+class ItemShopFragment : Fragment(R.layout.item_shop_fragment) {
 
     private val viewModel: ItemShopViewModel by viewModels {
         object : ViewModelProvider.Factory {
@@ -34,7 +32,7 @@ class CadastroFragment : Fragment(R.layout.cadastro_fragment) {
         }
     }
 
-    private val args: CadastroFragmentArgs by navArgs()
+    private val args: ItemShopFragmentArgs by navArgs()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -43,6 +41,8 @@ class CadastroFragment : Fragment(R.layout.cadastro_fragment) {
             button_cadastro.text = getString(R.string.button_cadastro_update)
             input_item_name.setText(itemShop.name)
             input_item_quant.setText(itemShop.quantity)
+
+            button_delete.visibility = View.VISIBLE
         }
 
         observeEvents()
@@ -52,17 +52,13 @@ class CadastroFragment : Fragment(R.layout.cadastro_fragment) {
     private fun observeEvents() {
         viewModel.itemShopStateEventData.observe(viewLifecycleOwner) { itemShopState ->
             when (itemShopState) {
-                is ItemShopViewModel.ItemShopState.Inserted -> {
+                is ItemShopViewModel.ItemShopState.Inserted,
+                is ItemShopViewModel.ItemShopState.Updated,
+                is ItemShopViewModel.ItemShopState.Deleted -> {
                     clearFields()
                     hideKeyboard()
                     requireView().requestFocus()
 
-                    findNavController().popBackStack()
-                }
-
-                is ItemShopViewModel.ItemShopState.Updated -> {
-                    clearFields()
-                    hideKeyboard()
                     findNavController().popBackStack()
                 }
             }
@@ -90,6 +86,10 @@ class CadastroFragment : Fragment(R.layout.cadastro_fragment) {
             val quantity = input_item_name.text.toString()
 
             viewModel.addOrUpdateItemShop(name, quantity, args.shopItem?.id ?: 0)
+        }
+
+        button_delete.setOnClickListener {
+            viewModel.removeItemShop(args.shopItem?.id ?: 0)
         }
     }
 }

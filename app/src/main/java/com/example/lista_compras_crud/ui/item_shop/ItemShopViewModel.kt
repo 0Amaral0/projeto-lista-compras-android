@@ -36,9 +36,8 @@ class ItemShopViewModel(
 
             _itemShopStateEventData.value = ItemShopState.Updated
             _messageEventData.value = R.string.item_shop_success_update
-
         } catch (ex: Exception) {
-            _messageEventData.value = R.string.item_shop_error_insert
+            _messageEventData.value = R.string.item_shop_error_update
             Log.e(TAG, ex.toString())
         }
     }
@@ -56,9 +55,23 @@ class ItemShopViewModel(
         }
     }
 
+    fun removeItemShop(id: Long) = viewModelScope.launch {
+        try {
+            if (id > 0) {
+                repository.deleteItemShop(id)
+                _itemShopStateEventData.value = ItemShopState.Deleted
+                _messageEventData.value = R.string.item_shop_success_delete
+            }
+        } catch (ex: Exception) {
+            _messageEventData.value = R.string.item_shop_error_delete
+            Log.e(TAG, ex.toString())
+        }
+    }
+
     sealed class ItemShopState {
         object Inserted : ItemShopState()
         object Updated : ItemShopState()
+        object Deleted : ItemShopState()
     }
 
     companion object {
