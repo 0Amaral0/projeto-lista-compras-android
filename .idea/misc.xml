@@ -3,8 +3,13 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/Davi Amaral/AndroidStudioProjects/Lista_Compras_CRUD/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.15" />
+        <entry key="..\:/Users/Davi Amaral/AndroidStudioProjects/Lista_Compras_CRUD/app/src/main/res/drawable/ic_baseline_add_shopping_cart.xml" value="0.15" />
+        <entry key="..\:/Users/Davi Amaral/AndroidStudioProjects/Lista_Compras_CRUD/app/src/main/res/drawable/ic_launcher_background.xml" value="0.15" />
         <entry key="..\:/Users/Davi Amaral/AndroidStudioProjects/Lista_Compras_CRUD/app/src/main/res/layout/activity_main.xml" value="0.17806484295845998" />
         <entry key="..\:/Users/Davi Amaral/AndroidStudioProjects/Lista_Compras_CRUD/app/src/main/res/layout/cadastro_fragment.xml" value="0.26358695652173914" />
+        <entry key="..\:/Users/Davi Amaral/AndroidStudioProjects/Lista_Compras_CRUD/app/src/main/res/layout/item_shop_list_fragment.xml" value="0.26358695652173914" />
+        <entry key="..\:/Users/Davi Amaral/AndroidStudioProjects/Lista_Compras_CRUD/app/src/main/res/layout/shop_list_item.xml" value="0.5" />
       </map>
     </option>
   </component>
