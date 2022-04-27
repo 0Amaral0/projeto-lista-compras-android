@@ -7,6 +7,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import com.example.lista_compras_crud.R
 import com.example.lista_compras_crud.data.db.AppDatabase
 import com.example.lista_compras_crud.data.db.dao.ItemShopDAO
@@ -43,6 +44,9 @@ class CadastroFragment : Fragment(R.layout.cadastro_fragment) {
                 is ItemShopViewModel.ItemShopState.Inserted -> {
                     clearFields()
                     hideKeyboard()
+                    requireView().requestFocus()
+
+                    findNavController().popBackStack()
                 }
             }
         }

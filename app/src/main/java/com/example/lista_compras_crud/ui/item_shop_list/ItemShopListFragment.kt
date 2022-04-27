@@ -50,6 +50,11 @@ class ItemShopListFragment : Fragment(R.layout.item_shop_list_fragment) {
         }
     }
 
+    override fun onResume() {
+        super.onResume()
+        viewModel.getItemsShop()
+    }
+
     private fun configureViewListeners() {
         fabAddItemShop.setOnClickListener {
             findNavController().navigateWithAnimations(R.id.cadastroFragment)

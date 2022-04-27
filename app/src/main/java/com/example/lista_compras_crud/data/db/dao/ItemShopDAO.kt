@@ -22,5 +22,5 @@ interface ItemShopDAO {
     suspend fun deleteAll()
 
     @Query("SELECT * FROM shop_item")
-    fun getAll() : LiveData<List<ItemShopEntity>>
+    suspend fun getAll() : List<ItemShopEntity>
 }
