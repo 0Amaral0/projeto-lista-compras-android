@@ -35,7 +35,7 @@ class DatabaseDataSource(
             itemDAO.deleteAll()
         }
 
-        override suspend fun getAllItemsShop(): LiveData<List<ItemShopEntity>> {
+        override fun getAllItemsShop(): LiveData<List<ItemShopEntity>> {
             return itemDAO.getAll()
         }
 

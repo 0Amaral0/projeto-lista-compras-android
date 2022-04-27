@@ -46,7 +46,6 @@ class CadastroFragment : Fragment(R.layout.cadastro_fragment) {
                 }
             }
         }
-
         viewModel.messageEventData.observe(viewLifecycleOwner) { stringResId ->
             Snackbar.make(requireView(), stringResId, Snackbar.LENGTH_LONG).show()
         }

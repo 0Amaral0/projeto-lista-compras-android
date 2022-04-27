@@ -14,5 +14,5 @@ interface ItemShopRepository {
 
     suspend fun deleteAllItemsShop()
 
-    suspend fun getAllItemsShop(): LiveData<List<ItemShopEntity>>
+    fun getAllItemsShop(): LiveData<List<ItemShopEntity>>
 }
