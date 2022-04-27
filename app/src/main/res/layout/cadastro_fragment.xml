@@ -6,7 +6,9 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="15dp"
-    tools:context=".ui.cadastro.CadastroFragment">
+    android:focusable="true"
+    android:focusableInTouchMode="true"
+    tools:context=".ui.item_shop.CadastroFragment">
 
     <com.google.android.material.textfield.TextInputLayout
     android:id="@+id/input_layout_item_name"

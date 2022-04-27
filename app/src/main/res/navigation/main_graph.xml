@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/cadastroFragment"
-        android:name="com.example.lista_compras_crud.ui.cadastro.CadastroFragment"
+        android:name="com.example.lista_compras_crud.ui.item_shop.CadastroFragment"
         android:label="Cadastro"
         tools:layout="@layout/cadastro_fragment" />
 </navigation>
