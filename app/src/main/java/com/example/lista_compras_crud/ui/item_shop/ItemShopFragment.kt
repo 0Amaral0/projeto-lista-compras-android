@@ -52,8 +52,22 @@ class ItemShopFragment : Fragment(R.layout.item_shop_fragment) {
     private fun observeEvents() {
         viewModel.itemShopStateEventData.observe(viewLifecycleOwner) { itemShopState ->
             when (itemShopState) {
-                is ItemShopViewModel.ItemShopState.Inserted,
-                is ItemShopViewModel.ItemShopState.Updated,
+                is ItemShopViewModel.ItemShopState.Inserted -> {
+                    clearFields()
+                    hideKeyboard()
+                    requireView().requestFocus()
+
+                    findNavController().popBackStack()
+                }
+
+                is ItemShopViewModel.ItemShopState.Updated -> {
+                    clearFields()
+                    hideKeyboard()
+                    requireView().requestFocus()
+
+                    findNavController().popBackStack()
+                }
+
                 is ItemShopViewModel.ItemShopState.Deleted -> {
                     clearFields()
                     hideKeyboard()
@@ -83,7 +97,7 @@ class ItemShopFragment : Fragment(R.layout.item_shop_fragment) {
     private fun setListeners() {
         button_cadastro.setOnClickListener {
             val name = input_item_name.text.toString()
-            val quantity = input_item_name.text.toString()
+            val quantity = input_item_quant.text.toString()
 
             viewModel.addOrUpdateItemShop(name, quantity, args.shopItem?.id ?: 0)
         }
