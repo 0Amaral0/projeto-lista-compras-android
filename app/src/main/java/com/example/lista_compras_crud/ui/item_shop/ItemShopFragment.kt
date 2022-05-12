@@ -2,6 +2,7 @@ package com.example.lista_compras_crud.ui.item_shop
 
 import android.os.Bundle
 import android.view.View
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
@@ -20,6 +21,8 @@ import kotlinx.android.synthetic.main.item_shop_fragment.*
 
 class ItemShopFragment : Fragment(R.layout.item_shop_fragment) {
 
+    private lateinit var builder : AlertDialog.Builder
+
     private val viewModel: ItemShopViewModel by viewModels {
         object : ViewModelProvider.Factory {
             override fun <T : ViewModel> create(modelClass: Class<T>): T {
@@ -36,6 +39,7 @@ class ItemShopFragment : Fragment(R.layout.item_shop_fragment) {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
 
         args.shopItem?.let { itemShop ->
             button_cadastro.text = getString(R.string.button_cadastro_update)
@@ -102,8 +106,22 @@ class ItemShopFragment : Fragment(R.layout.item_shop_fragment) {
             viewModel.addOrUpdateItemShop(name, quantity, args.shopItem?.id ?: 0)
         }
 
+        builder = AlertDialog.Builder(requireActivity())
+
         button_delete.setOnClickListener {
-            viewModel.removeItemShop(args.shopItem?.id ?: 0)
+            builder.setTitle("Deletar Item")
+                .setMessage("Deseja deletar este item?")
+                .setCancelable(true)
+
+                .setPositiveButton("Sim"){dialogInterface,it ->
+                    viewModel.removeItemShop(args.shopItem?.id ?: 0)
+                }
+
+                .setNegativeButton("Não"){dialogInterface,it ->
+                    dialogInterface.cancel()
+                }
+                .show()
+
         }
     }
 }
