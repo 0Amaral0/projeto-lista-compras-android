@@ -16,6 +16,7 @@ import com.example.lista_compras_crud.data.db.dao.ItemShopDAO
 import com.example.lista_compras_crud.extension.hideKeyboard
 import com.example.lista_compras_crud.repository.DatabaseDataSource
 import com.example.lista_compras_crud.repository.ItemShopRepository
+import com.example.lista_compras_crud.ui.item_shop_list.ItemShopListViewModel
 import com.google.android.material.snackbar.Snackbar
 import kotlinx.android.synthetic.main.item_shop_fragment.*
 
@@ -99,14 +100,14 @@ class ItemShopFragment : Fragment(R.layout.item_shop_fragment) {
     }
 
     private fun setListeners() {
+        builder = AlertDialog.Builder(requireActivity())
+
         button_cadastro.setOnClickListener {
             val name = input_item_name.text.toString()
             val quantity = input_item_quant.text.toString()
 
             viewModel.addOrUpdateItemShop(name, quantity, args.shopItem?.id ?: 0)
         }
-
-        builder = AlertDialog.Builder(requireActivity())
 
         button_delete.setOnClickListener {
             builder.setTitle("Deletar Item")

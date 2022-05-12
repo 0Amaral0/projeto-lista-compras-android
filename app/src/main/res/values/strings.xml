@@ -14,4 +14,6 @@
     <string name="item_shop_success_delete">Item deletado com sucesso</string>
     <string name="item_shop_error_delete">Houve um erro ao tentar deletar o item</string>
     <string name="item_shop_error_update">Houve um erro ao tentar modificar o item</string>
+    <string name="item_shop_success_delete_all">Carrinho foi limpo com sucesso</string>
+    <string name="item_shop_error_delete_all">Houve um erro ao limpar o carrinho</string>
 </resources>

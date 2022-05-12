@@ -3,7 +3,6 @@ package com.example.lista_compras_crud.repository
 import androidx.lifecycle.LiveData
 import com.example.lista_compras_crud.data.db.entity.ItemShopEntity
 
-
 interface ItemShopRepository {
 
     suspend fun insertItemShop(name: String, quantity: String): Long

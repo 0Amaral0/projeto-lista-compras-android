@@ -2,6 +2,7 @@ package com.example.lista_compras_crud.ui.item_shop_list
 
 import android.os.Bundle
 import android.view.View
+import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
@@ -21,6 +22,8 @@ import kotlinx.android.synthetic.main.item_shop_list_fragment.*
 
 class ItemShopListFragment : Fragment(R.layout.item_shop_list_fragment) {
 
+    private lateinit var builder : AlertDialog.Builder
+
     private val viewModel: ItemShopListViewModel by viewModels {
         object : ViewModelProvider.Factory {
             override fun <T : ViewModel> create(modelClass: Class<T>): T {
@@ -29,6 +32,7 @@ class ItemShopListFragment : Fragment(R.layout.item_shop_list_fragment) {
 
                 val repository: ItemShopRepository = DatabaseDataSource(itemShopDAO)
                 return ItemShopListViewModel(repository) as T
+
             }
         }
     }
@@ -63,6 +67,25 @@ class ItemShopListFragment : Fragment(R.layout.item_shop_list_fragment) {
     }
 
     private fun configureViewListeners() {
+
+        builder = AlertDialog.Builder(requireActivity())
+
+        fabDeleteAllItemShop.setOnClickListener {
+            builder.setTitle("Limpar o Carrinho")
+                .setMessage("Deseja deletar todos os itens da sua lista?")
+                .setCancelable(true)
+
+                .setPositiveButton("Sim"){dialogInterface,it ->
+                    viewModel.removeAllItemShop()
+                    viewModel.getItemsShop()
+                }
+
+                .setNegativeButton("Não"){dialogInterface,it ->
+                    dialogInterface.cancel()
+                }
+                .show()
+        }
+
         fabAddItemShop.setOnClickListener {
             findNavController().navigateWithAnimations(
                 R.id.action_itemShopListFragment_to_cadastroFragment
