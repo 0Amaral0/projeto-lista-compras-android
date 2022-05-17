@@ -36,6 +36,7 @@ class ItemShopListViewModel(
     fun removeAllItemShop() = viewModelScope.launch  {
         try {
             repository.deleteAllItemsShop()
+            _messageEventData.value = R.string.item_shop_success_delete_all
 
         } catch (ex: Exception) {
             _messageEventData.value = R.string.item_shop_error_delete_all
