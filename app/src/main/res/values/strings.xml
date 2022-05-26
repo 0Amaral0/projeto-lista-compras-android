@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Lista de Compras</string>
+    <string name="app_name">MyCart</string>
 
     <string name="item_shop_success_insert">Item inserido com sucesso</string>
     <string name="item_shop_error_insert">Houve um erro ao inserir o item</string>

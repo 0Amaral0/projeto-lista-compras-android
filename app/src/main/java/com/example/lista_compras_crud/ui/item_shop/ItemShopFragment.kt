@@ -1,7 +1,10 @@
 package com.example.lista_compras_crud.ui.item_shop
 
 import android.os.Bundle
+import android.text.Editable
+import android.text.TextWatcher
 import android.view.View
+import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
@@ -16,6 +19,7 @@ import com.example.lista_compras_crud.data.db.dao.ItemShopDAO
 import com.example.lista_compras_crud.extension.hideKeyboard
 import com.example.lista_compras_crud.repository.DatabaseDataSource
 import com.example.lista_compras_crud.repository.ItemShopRepository
+import com.example.lista_compras_crud.ui.item_shop_list.ItemShopListFragmentDirections
 import com.example.lista_compras_crud.ui.item_shop_list.ItemShopListViewModel
 import com.google.android.material.snackbar.Snackbar
 import kotlinx.android.synthetic.main.item_shop_fragment.*
@@ -41,7 +45,6 @@ class ItemShopFragment : Fragment(R.layout.item_shop_fragment) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-
         args.shopItem?.let { itemShop ->
             button_cadastro.text = getString(R.string.button_cadastro_update)
             input_item_name.setText(itemShop.name)
@@ -53,6 +56,8 @@ class ItemShopFragment : Fragment(R.layout.item_shop_fragment) {
         observeEvents()
         setListeners()
     }
+
+
 
     private fun observeEvents() {
         viewModel.itemShopStateEventData.observe(viewLifecycleOwner) { itemShopState ->

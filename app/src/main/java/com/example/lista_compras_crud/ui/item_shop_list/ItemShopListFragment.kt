@@ -2,25 +2,23 @@ package com.example.lista_compras_crud.ui.item_shop_list
 
 import android.os.Bundle
 import android.view.View
-import android.widget.Toast
+import android.view.ViewGroup
+import android.widget.TextView
 import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import androidx.navigation.NavDirections
 import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.RecyclerView
 import com.example.lista_compras_crud.R
 import com.example.lista_compras_crud.data.db.AppDatabase
 import com.example.lista_compras_crud.data.db.dao.ItemShopDAO
-import com.example.lista_compras_crud.data.db.entity.ItemShopEntity
 import com.example.lista_compras_crud.extension.navigateWithAnimations
 import com.example.lista_compras_crud.repository.DatabaseDataSource
 import com.example.lista_compras_crud.repository.ItemShopRepository
-import com.example.lista_compras_crud.ui.item_shop.ItemShopViewModel
 import kotlinx.android.synthetic.main.item_shop_list_fragment.*
-import java.text.FieldPosition
+
 
 class ItemShopListFragment : Fragment(R.layout.item_shop_list_fragment) {
 
@@ -34,7 +32,6 @@ class ItemShopListFragment : Fragment(R.layout.item_shop_list_fragment) {
 
                 val repository: ItemShopRepository = DatabaseDataSource(itemShopDAO)
                 return ItemShopListViewModel(repository) as T
-
             }
         }
     }

@@ -16,11 +16,11 @@ interface ItemShopDAO {
     suspend fun update(shop_item: ItemShopEntity)
 
     @Query("DELETE FROM shop_item WHERE id = :id")
-    suspend fun delete (id: Long)
+    suspend fun delete(id: Long)
 
     @Query("DELETE FROM shop_item")
     suspend fun deleteAll()
 
     @Query("SELECT * FROM shop_item")
-    suspend fun getAll() : List<ItemShopEntity>
+    suspend fun getAll(): List<ItemShopEntity>
 }

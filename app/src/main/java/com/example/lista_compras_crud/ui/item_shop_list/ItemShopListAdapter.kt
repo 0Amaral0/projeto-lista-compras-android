@@ -3,10 +3,14 @@ package com.example.lista_compras_crud.ui.item_shop_list
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
+import android.widget.ImageButton
 import android.widget.TextView
+import androidx.annotation.NonNull
 import androidx.recyclerview.widget.RecyclerView
 import com.example.lista_compras_crud.R
 import com.example.lista_compras_crud.data.db.entity.ItemShopEntity
+import kotlinx.android.synthetic.main.item_shop_fragment.view.*
 import kotlinx.android.synthetic.main.shop_list_item.view.*
 
 class ItemShopListAdapter(
